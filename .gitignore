@@ -1,0 +1,34 @@
+# Secrets
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+config.json
+agentwallet.json
+
+# Anchor
+.anchor/
+target/
+**/*.rs.bk
+node_modules/
+test-ledger/
+
+# Next.js
+.next/
+out/
+dist/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
