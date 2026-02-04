@@ -26,6 +26,7 @@ pub mod shalom_x402_facilitator {
         config.tithe_bps = tithe_bps;
         config.total_payments = 0;
         config.total_volume = 0;
+        config.bump = ctx.bumps.config;
         
         msg!("✝️ Facilitator initialized — Honor the Lord with your wealth");
         msg!("Impact treasury: {}", impact_treasury);
@@ -41,6 +42,8 @@ pub mod shalom_x402_facilitator {
         payment_id: String,  // Unique identifier for idempotency
     ) -> Result<()> {
         require!(amount > 0, ErrorCode::InvalidAmount);
+        require!(payment_id.len() <= 32, ErrorCode::PaymentIdTooLong);
+        require!(!ctx.accounts.payment_receipt.settled, ErrorCode::AlreadySettled);
         
         let config = &ctx.accounts.config;
         
@@ -243,6 +246,7 @@ pub struct SettlePayment<'info> {
     #[account(
         mut,
         token::mint = usdc_mint,
+        token::authority = config.authority,
     )]
     pub protocol_treasury_account: Account<'info, TokenAccount>,
     
@@ -283,4 +287,6 @@ pub enum ErrorCode {
     MathOverflow,
     #[msg("Payment already settled")]
     AlreadySettled,
+    #[msg("Payment ID too long")]
+    PaymentIdTooLong,
 }
