@@ -5,6 +5,7 @@ export interface PaymentRequest {
   recipient: string;
   resource: string;
   id?: string;
+  description?: string;
 }
 
 export interface PaymentResponse {

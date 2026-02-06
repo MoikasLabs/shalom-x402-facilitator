@@ -6,29 +6,59 @@
 
 html {
   scroll-behavior: smooth;
+  touch-action: manipulation;
 }
 
 body {
   background-color: #0a0a0f;
   color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
+/* Mobile-first responsive base */
+html {
+  font-size: 14px;
 }
 
-::-webkit-scrollbar-track {
-  background: #0a0a0f;
+@media (min-width: 640px) {
+  html {
+    font-size: 15px;
+  }
 }
 
-::-webkit-scrollbar-thumb {
-  background: rgba(251, 146, 60, 0.3);
-  border-radius: 4px;
+@media (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(251, 146, 60, 0.5);
+/* Custom scrollbar (desktop only) */
+@media (pointer: fine) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0a0f;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(251, 146, 60, 0.3);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(251, 146, 60, 0.5);
+  }
+}
+
+/* Mobile scrollbar */
+@media (pointer: coarse) {
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
 }
 
 /* Animations */
@@ -48,4 +78,47 @@ body {
 
 .animate-pulse {
   animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive utilities */
+.mobile-only {
+  display: block;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+  .desktop-only {
+    display: block;
+  }
+}
+
+/* Touch-friendly tap targets */
+button, a, input, select {
+  touch-action: manipulation;
+}
+
+/* Prevent zoom on input focus (iOS) */
+input, select, textarea {
+  font-size: 16px;
+}
+
+/* Safe area insets for notched devices */
+@supports (padding: max(0px)) {
+  .safe-area-inset {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+    padding-top: max(16px, env(safe-area-inset-top));
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
 }

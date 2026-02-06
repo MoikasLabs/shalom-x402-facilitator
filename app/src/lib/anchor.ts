@@ -257,7 +257,7 @@ export async function fetchFacilitatorState(
     const program = getProgram(provider);
     const [facilitatorPDA] = getFacilitatorPDA();
     
-    const account = await program.account.facilitator.fetch(facilitatorPDA);
+    const account = await (program.account as any).facilitator.fetch(facilitatorPDA);
     
     return {
       authority: account.authority,
