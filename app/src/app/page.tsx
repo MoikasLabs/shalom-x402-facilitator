@@ -7,9 +7,9 @@ import { useState } from 'react';
 import { WalletButton } from '@/components/WalletButton';
 import { BalanceCard } from '@/components/BalanceCard';
 import { PaymentForm } from '@/components/PaymentForm';
-import { PaymentHistory } from '@/components/PaymentHistory';
-import { ImpactMetrics } from '@/components/ImpactMetrics';
-import { X402Demo } from '@/components/X402Demo';
+import { PaymentHistoryReal } from '@/components/PaymentHistoryReal';
+import { ImpactMetricsReal } from '@/components/ImpactMetricsReal';
+import { X402DemoReal } from '@/components/X402DemoReal';
 
 export default function HomePage() {
   const { connected } = useWallet();
@@ -212,17 +212,17 @@ export default function HomePage() {
               <PaymentForm />
             </div>
 
-            {/* Right Column - History & Metrics */}
+            {/* Right Column - History & Metrics (REAL DATA) */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
               <div style={{ 
                 display: 'grid', 
                 gridTemplateColumns: '1fr',
                 gap: '16px',
               }} className="metrics-grid">
-                <ImpactMetrics />
-                <X402Demo />
+                <ImpactMetricsReal />
+                <X402DemoReal />
               </div>
-              <PaymentHistory />
+              <PaymentHistoryReal />
             </div>
           </div>
 

@@ -21,10 +21,10 @@
     "@solana/wallet-adapter-torus": "^0.11.28",
     "@solana/web3.js": "^1.87.6",
     "framer-motion": "^11.0.0",
-    "next": "14.2.0",
+    "lucide-react": "^0.400.0",
+    "next": "^14.0.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "lucide-react": "^0.400.0"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/node": "^20",

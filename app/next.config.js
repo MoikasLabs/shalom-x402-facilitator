@@ -9,7 +9,6 @@ const nextConfig = {
     NEXT_PUBLIC_SOLANA_NETWORK: 'devnet',
     NEXT_PUBLIC_PROGRAM_ID: 'Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS',
   },
-  swcMinify: true,
 };
 
 module.exports = nextConfig;
